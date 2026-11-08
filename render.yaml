@@ -1,0 +1,18 @@
+# Render Blueprint. В Dashboard: New -> Blueprint -> указать этот репозиторий.
+# BOT_TOKEN и ADMIN_IDS помечены sync:false — Render попросит ввести их
+# вручную в Dashboard и НЕ будет хранить в этом файле / репозитории.
+services:
+  - type: web
+    name: card-bot
+    runtime: python
+    plan: free
+    region: frankfurt
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python bot.py"
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: ADMIN_IDS
+        sync: false
+      - key: PYTHON_VERSION
+        value: "3.11.9"
